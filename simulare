@@ -1,0 +1,24 @@
+import random
+import math
+import matplotlib.pyplot as plt
+import time
+import cupy as cp
+import cupy as cp
+
+nr_iteratii = int(input("Introduceti numarul de iteratii: "))
+
+start = time.perf_counter()
+
+x = cp.random.uniform(-1, 1, nr_iteratii)
+y = cp.random.uniform(-1, 1, nr_iteratii)
+
+in_cerc = x**2 + y**2 <= 1
+nr_puncte_in_cerc = cp.sum(in_cerc)
+
+pi_aprox = 4 * nr_puncte_in_cerc / nr_iteratii
+
+end = time.perf_counter()
+
+print("Pi aproximat:", float(pi_aprox))
+print("Pi real:", math.pi)
+print("Timp de rulare:", end - start, "secunde")
